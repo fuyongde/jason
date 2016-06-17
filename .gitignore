@@ -1,0 +1,5 @@
+commons/.idea/
+commons/commons.iml
+commons/target/
+parent/.idea/
+parent/parent.iml
