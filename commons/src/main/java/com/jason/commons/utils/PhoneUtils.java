@@ -22,14 +22,26 @@ public class PhoneUtils {
             return pattern;
         }
 
-        public void setPattern(String pattern) {
-            this.pattern = pattern;
-        }
     }
 
-    public static boolean isMobile(String phone) {
-        Pattern pattern = Pattern.compile(PhoneNumberPattern.MOBILE.getPattern());
-        Matcher matcher = pattern.matcher(phone);
+    /**
+     * 判断是否为手机号码
+     * @param phoneNum 手机号码
+     * @return
+     */
+    public static boolean isMobile(String phoneNum) {
+        return isPhoneNum(phoneNum, PhoneNumberPattern.MOBILE);
+    }
+
+    /**
+     * 判断是否为电话号码
+     * @param phoneNum 电话号码
+     * @param phoneNumberPattern 电话号码匹配规则
+     * @return
+     */
+    public static boolean isPhoneNum(String phoneNum, PhoneNumberPattern phoneNumberPattern){
+        Pattern pattern = Pattern.compile(phoneNumberPattern.getPattern());
+        Matcher matcher = pattern.matcher(phoneNum);
         return matcher.matches();
     }
 }
