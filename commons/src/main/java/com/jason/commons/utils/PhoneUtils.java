@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class PhoneUtils {
 
     enum PhoneNumberPattern{
-        MOBILE("^[1]([3][0-9]{1}|59|58|88|89|85|83)[0-9]{8}$"),
+        MOBILE("^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$"),
         TELEPHONE("");
 
         String pattern;
