@@ -1,5 +1,9 @@
 package com.jason.commons.utils;
 
+import com.jason.commons.date.DateFormaterEmun;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,6 +17,7 @@ public class IdCardUtils {
     enum IdCardPattern {
         ID_CARD_15("^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$"),
         ID_CARD_18("^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$"),
+        BIRTHADY("\\d{6}(\\d{4})(\\d{2})(\\d{2}).*"),
         PASSPORT("");
 
         String pattern;
@@ -64,8 +69,20 @@ public class IdCardUtils {
      * @param idCardNum 身份证号码
      * @return
      */
-    public static Date getBirthday(String idCardNum) {
-        return new Date();
+    public static Date getBirthday(String idCardNum) throws ParseException {
+        Pattern birthdayPattern = Pattern.compile(IdCardPattern.BIRTHADY.getPattern());
+        Matcher birthdayMather = birthdayPattern.matcher(idCardNum);
+        StringBuffer dateStr = new StringBuffer();
+        if (birthdayMather.find()) {
+            String yearStr = birthdayMather.group(1);
+            String monthStr = birthdayMather.group(2);
+            String dayStr = birthdayMather.group(3);
+            dateStr.append(yearStr).append(monthStr).append(dayStr);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DateFormaterEmun.pattern9.getPattern());
+            return simpleDateFormat.parse(dateStr.toString());
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -74,7 +91,14 @@ public class IdCardUtils {
      * @return
      */
     public static int getBirthdayYear(String idCardNum) {
-        return 0;
+        Pattern birthdayPattern = Pattern.compile(IdCardPattern.BIRTHADY.getPattern());
+        Matcher birthdayMather = birthdayPattern.matcher(idCardNum);
+        if (birthdayMather.find()) {
+            String yearStr = birthdayMather.group(1);
+            return Integer.valueOf(yearStr);
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -83,7 +107,14 @@ public class IdCardUtils {
      * @return
      */
     public static int getBirthdayMonth(String idCardNum) {
-        return 0;
+        Pattern birthdayPattern = Pattern.compile(IdCardPattern.BIRTHADY.getPattern());
+        Matcher birthdayMather = birthdayPattern.matcher(idCardNum);
+        if (birthdayMather.find()) {
+            String monthStr = birthdayMather.group(2);
+            return Integer.valueOf(monthStr);
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -92,6 +123,13 @@ public class IdCardUtils {
      * @return
      */
     public static int getBirthdayDayofMonth(String idCardNum) {
-        return 0;
+        Pattern birthdayPattern = Pattern.compile(IdCardPattern.BIRTHADY.getPattern());
+        Matcher birthdayMather = birthdayPattern.matcher(idCardNum);
+        if (birthdayMather.find()) {
+            String day = birthdayMather.group(3);
+            return Integer.valueOf(day);
+        } else {
+            return 0;
+        }
     }
 }
