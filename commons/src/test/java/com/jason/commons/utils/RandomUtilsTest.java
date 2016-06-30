@@ -1,10 +1,9 @@
 package com.jason.commons.utils;
 
 import com.jason.commons.date.DateUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author <Authors name>
  * @version 1.0
- * @since <pre>���� 30, 2016</pre>
+ * @since <pre>6 30, 2016</pre>
  */
 public class RandomUtilsTest {
 
