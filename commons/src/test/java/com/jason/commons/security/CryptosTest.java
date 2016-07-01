@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author <Authors name>
  * @version 1.0
- * @since <pre>���� 30, 2016</pre>
+ * @since <pre>6 30, 2016</pre>
  */
 public class CryptosTest {
 
