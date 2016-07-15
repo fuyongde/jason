@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public class PhoneUtils {
 
-    enum PhoneNumberPattern{
+    enum PhoneNumberPattern {
         MOBILE("^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$"),
         TELEPHONE("");
 
@@ -26,6 +26,7 @@ public class PhoneUtils {
 
     /**
      * 判断是否为手机号码
+     *
      * @param phoneNum 手机号码
      * @return
      */
@@ -35,11 +36,12 @@ public class PhoneUtils {
 
     /**
      * 判断是否为电话号码
-     * @param phoneNum 电话号码
+     *
+     * @param phoneNum           电话号码
      * @param phoneNumberPattern 电话号码匹配规则
      * @return
      */
-    public static boolean isPhoneNum(String phoneNum, PhoneNumberPattern phoneNumberPattern){
+    public static boolean isPhoneNum(String phoneNum, PhoneNumberPattern phoneNumberPattern) {
         Pattern pattern = Pattern.compile(phoneNumberPattern.getPattern());
         Matcher matcher = pattern.matcher(phoneNum);
         return matcher.matches();
