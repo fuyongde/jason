@@ -10,11 +10,14 @@ import java.util.List;
  */
 public class LambdaApp {
     public static void main(String[] args) {
-//        old();
-//        new1();
-//        new2();
-//        new3();
+        old();
+        new1();
+        new2();
+        new3();
         new4();
+        int a = 1, b = 3;
+        int c = a = b;
+        System.out.println(c);
     }
 
     public static void old(){
